@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StealthMsg - Encrypted Messaging</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Auth Section -->
+        <div id="auth-section">
+            <h1>StealthMsg</h1>
+            <div id="login-form">
+                <h2>Login</h2>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button id="login-btn">Login</button>
+            </div>
+            <div id="register-form">
+                <h2>Register</h2>
+                <input type="text" id="register-username" placeholder="Username" required>
+                <input type="email" id="register-email" placeholder="Email" required>
+                <button id="register-btn">Register</button>
+            </div>
+            <!-- Demo mode: No authentication required, just register/login with any email -->
+        </div>
+
+        <!-- Chat Section -->
+        <div id="chat-section" style="display: none;">
+            <header>
+                <h1>StealthMsg</h1>
+                <button id="logout-btn">Logout</button>
+            </header>
+            <div id="chat-container">
+                <div id="user-list">
+                    <input type="text" id="search-users" placeholder="Search users...">
+                    <ul id="users"></ul>
+                </div>
+                <div id="chat-area">
+                    <div id="messages"></div>
+                    <div id="message-input">
+                        <textarea id="message-text" placeholder="Type your message..."></textarea>
+                        <button id="encrypt-btn">Encrypt</button>
+                        <button id="send-btn" style="display: none;">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase SDK scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module">
+        // Initialize Supabase (config will be loaded from supabase-config.js)
+        window.supabase = supabase.createClient(window.supabaseConfig.url, window.supabaseConfig.anonKey);
+    </script>
+    <script src="crypto.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
